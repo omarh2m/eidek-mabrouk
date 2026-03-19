@@ -1,111 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eid Mubarak</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: radial-gradient(circle at top, #fff3c4, #f8d800);
-      overflow: hidden;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eid Mubarak Story</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  /* Body & Background */
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at top, #fff3c4, #f8d800);
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-    .card {
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-      padding: 2.5rem;
-      max-width: 600px;
-      width: 90%;
-      text-align: center;
-      position: relative;
-    }
+  /* Card */
+  .card {
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    padding: 2.5rem;
+    max-width: 600px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    transition: all 0.5s ease;
+  }
 
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      color: #6a00a8;
-    }
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: #6a00a8;
+  }
 
-    .typewriter {
-      font-size: 2rem;
-      color: #ff4d6d;
-      font-weight: bold;
-      height: 40px;
-      margin-bottom: 1rem;
-    }
+  .typewriter {
+    font-size: 2rem;
+    color: #ff4d6d;
+    font-weight: bold;
+    height: 40px;
+    margin-bottom: 1rem;
+  }
 
-    .btn {
-      background: linear-gradient(45deg, #ff69b4, #6a00a8);
-      color: white;
-      border: none;
-      border-radius: 30px;
-      padding: 0.8rem 2rem;
-      cursor: pointer;
-      margin-top: 1rem;
-    }
+  .btn {
+    background: linear-gradient(45deg, #ff69b4, #6a00a8);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 0.8rem 2rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    font-size: 1rem;
+  }
 
-    .scene {
-      display: none;
-      animation: fadeIn 1s ease forwards;
-    }
+  .btn:hover {
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+  }
 
-    .active {
-      display: block;
-    }
+  .scene {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
 
-    @keyframes fadeIn {
-      from {opacity:0; transform: translateY(20px);} 
-      to {opacity:1; transform: translateY(0);} 
-    }
+  .scene.active {
+    display: block;
+    opacity: 1;
+  }
 
-    .heart {
-      position: absolute;
-      color: #ff4d6d;
-      font-size: 20px;
-      animation: floatHearts 5s linear infinite;
-    }
+  .scene img {
+    max-width: 80%;
+    border-radius: 15px;
+    margin: 1rem 0;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    transition: transform 0.5s ease;
+  }
 
-    @keyframes floatHearts {
-      0% { transform: translateY(100vh); opacity: 0; }
-      50% { opacity: 1; }
-      100% { transform: translateY(-10vh); opacity: 0; }
-    }
+  .scene img:hover {
+    transform: scale(1.03);
+  }
 
-    .hidden-msg {
-      display: none;
-      font-size: 1.1rem;
-      color: #6a00a8;
-      margin-top: 1rem;
-      animation: fadeIn 1s ease forwards;
-    }
+  .hidden-msg {
+    display: none;
+    font-size: 1.1rem;
+    color: #6a00a8;
+    margin-top: 1rem;
+  }
 
-    .replay-btn {
-      display: none;
-      margin-top: 1rem;
-      background: #ff69b4;
-      padding: 0.6rem 1.5rem;
-      border-radius: 25px;
-      cursor: pointer;
-      color: white;
-    }
+  .replay-btn {
+    display: none;
+    margin-top: 1rem;
+    background: #ff69b4;
+    padding: 0.6rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    color: white;
+    font-size: 1rem;
+  }
 
-    .scene img {
-      max-width: 80%;
-      border-radius: 15px;
-      margin: 1rem 0;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    }
+  /* Floating hearts animation */
+  .heart {
+    position: absolute;
+    color: #ff4d6d;
+    font-size: 20px;
+    animation: floatHearts 5s linear infinite;
+  }
 
-  </style>
+  @keyframes floatHearts {
+    0% { transform: translateY(100vh); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+  }
+</style>
 </head>
 <body>
 
@@ -114,7 +125,6 @@
 </audio>
 
 <div class="card">
-
   <!-- Scene 1 -->
   <div class="scene active" id="scene1">
     <h1>Eid Mubarak 🌙</h1>
@@ -139,11 +149,7 @@
 
   <!-- Scene 4 -->
   <div class="scene" id="scene4">
-    <p>
-      ❤️ سيرين، ربي يتقبل منك الصيام و القيام و كل عمل صالح،
-      و يفيض عليك برحمته و مغفرته.
-      إن شاء الله أيامك كلها فرحة، و نحب ديما نشوف الابتسامة متاعك ❤️
-    </p>
+    <p>❤️ سيرين، ربي يتقبل منك الصيام و القيام و كل عمل صالح، و يفيض عليك برحمته و مغفرته. إن شاء الله أيامك كلها فرحة، و نحب ديما نشوف الابتسامة متاعك ❤️</p>
     <p class="hidden-msg" id="hiddenMsg">👀 Surprise! This secret message is just for you: أحبك أكثر من أي شي!</p>
     <button class="btn" onmousedown="showHiddenMsg()" onmouseup="hideHiddenMsg()">Press & Hold for Secret 💌</button>
     <button class="btn" onclick="nextScene(5)">One last thing ➝</button>
@@ -155,53 +161,61 @@
     <p>و إن شاء الله نكون أنا سبب صغير في فرحتك ❤️</p>
     <button class="replay-btn" id="replayBtn" onclick="replay()">Replay our story 🔁</button>
   </div>
-
 </div>
 
 <script>
-
-function playMusic(){
-  document.getElementById('bgMusic').play();
-  document.removeEventListener('click', playMusic);
-}
-document.addEventListener('click', playMusic);
-
-function nextScene(n) {
-  document.querySelectorAll('.scene').forEach(s => s.classList.remove('active'));
-  document.getElementById('scene' + n).classList.add('active');
-  if(n === 2) typeWriter();
-  if(n === 5) document.getElementById('replayBtn').style.display = 'inline-block';
-}
-
-function typeWriter() {
-  let text = "Syrine ❤️";
-  let i = 0;
-  let speed = 120;
-  let el = document.getElementById("name");
-  el.innerHTML = "";
-  function typing() {
-    if (i < text.length) {
-      el.innerHTML += text.charAt(i);
-      i++;
-      setTimeout(typing, speed);
-    }
+  // Autoplay music on first interaction
+  function playMusic(){ 
+    document.getElementById('bgMusic').play();
+    document.removeEventListener('click', playMusic);
   }
-  typing();
-}
+  document.addEventListener('click', playMusic);
 
-function showHiddenMsg() {
-  document.getElementById('hiddenMsg').style.display = 'block';
-}
-function hideHiddenMsg() {
-  document.getElementById('hiddenMsg').style.display = 'none';
-}
+  // Scene navigation
+  function nextScene(n){
+    document.querySelectorAll('.scene').forEach(s => s.classList.remove('active'));
+    document.getElementById('scene'+n).classList.add('active');
+    if(n===2) typeWriter();
+    if(n===5) document.getElementById('replayBtn').style.display='inline-block';
+  }
 
-function replay(){
-  document.querySelectorAll('.scene').forEach(s => s.classList.remove('active'));
-  document.getElementById('scene1').classList.add('active');
-  document.getElementById('replayBtn').style.display = 'none';
-}
+  // Typewriter effect for Syrine
+  function typeWriter(){
+    let text = "Syrine ❤️";
+    let i=0;
+    let el = document.getElementById('name');
+    el.innerHTML="";
+    function typing(){
+      if(i<text.length){
+        el.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typing,120);
+      }
+    }
+    typing();
+  }
 
+  // Hidden message
+  function showHiddenMsg(){ document.getElementById('hiddenMsg').style.display='block'; }
+  function hideHiddenMsg(){ document.getElementById('hiddenMsg').style.display='none'; }
+
+  // Replay story
+  function replay(){
+    document.querySelectorAll('.scene').forEach(s => s.classList.remove('active'));
+    document.getElementById('scene1').classList.add('active');
+    document.getElementById('replayBtn').style.display='none';
+  }
+
+  // Optional floating hearts
+  for(let i=0;i<30;i++){
+    let heart = document.createElement('div');
+    heart.className='heart';
+    heart.innerHTML='❤';
+    heart.style.left = Math.random()*100+'vw';
+    heart.style.animationDuration = (Math.random()*3+2)+'s';
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),5000);
+  }
 </script>
 
 </body>
