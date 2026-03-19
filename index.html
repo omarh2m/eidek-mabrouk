@@ -4,190 +4,205 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Eid Mubarak</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      padding: 0;
-      font-family: 'Times New Roman', Times, serif;
-      background: linear-gradient(135deg, #FDEB71 0%, #F8D800 100%);
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, #fff3c4, #f8d800);
+      overflow: hidden;
       height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #333;
-      overflow: hidden;
-      animation: backgroundShift 10s ease-in-out infinite alternate;
-    }
-
-    @keyframes backgroundShift {
-      0% {
-        background-position: left;
-      }
-      100% {
-        background-position: right;
-      }
     }
 
     .card {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      padding: 2rem;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      padding: 2.5rem;
       max-width: 600px;
       width: 90%;
       text-align: center;
       position: relative;
-      overflow: hidden;
-      animation: floatCard 6s ease-in-out infinite;
-    }
-
-    @keyframes floatCard {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
     }
 
     h1 {
+      font-family: 'Playfair Display', serif;
       font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-      color: #4B0082;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      animation: fadeIn 2s ease forwards;
+      color: #6a00a8;
     }
 
-    p {
-      font-size: 1.125rem;
-      margin-bottom: 1.5rem;
-      line-height: 1.6;
-      opacity: 0;
-      animation: fadeInText 2s ease forwards;
-      animation-delay: 1s;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeInText {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .blessing {
-      font-size: 1rem;
-      color: #555;
-      margin-top: 1rem;
-      display: none;
+    .typewriter {
+      font-size: 2rem;
+      color: #ff4d6d;
+      font-weight: bold;
+      height: 40px;
+      margin-bottom: 1rem;
     }
 
     .btn {
-      background: #4B0082;
-      color: #fff;
+      background: linear-gradient(45deg, #ff69b4, #6a00a8);
+      color: white;
       border: none;
-      border-radius: 6px;
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
+      border-radius: 30px;
+      padding: 0.8rem 2rem;
       cursor: pointer;
-      transition: background 0.3s ease, transform 0.3s ease;
+      margin-top: 1rem;
     }
 
-    .btn:hover {
-      background: #370060;
-      transform: scale(1.05);
+    .scene {
+      display: none;
+      animation: fadeIn 1s ease forwards;
     }
 
-    .confetti {
+    .active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {opacity:0; transform: translateY(20px);} 
+      to {opacity:1; transform: translateY(0);} 
+    }
+
+    .heart {
       position: absolute;
-      top: -20px;
-      left: 50%;
-      width: 10px;
-      height: 10px;
-      background-color: #FFD700;
-      opacity: 0.8;
-      border-radius: 50%;
-      animation: fall 3s ease-in infinite;
+      color: #ff4d6d;
+      font-size: 20px;
+      animation: floatHearts 5s linear infinite;
     }
 
-    @keyframes fall {
-      0% {
-        transform: translateX(0) translateY(0) scale(1);
-        opacity: 0.8;
-      }
-      100% {
-        transform: translateX(calc(-50vw + 50%)) translateY(100vh) scale(0.5);
-        opacity: 0;
-      }
+    @keyframes floatHearts {
+      0% { transform: translateY(100vh); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-10vh); opacity: 0; }
     }
 
-    /* Responsive Styles */
-    @media (max-width: 599px) {
-      h1 {
-        font-size: 1.8rem;
-      }
-      p {
-        font-size: 1rem;
-      }
-      .card {
-        padding: 1.5rem;
-      }
+    .hidden-msg {
+      display: none;
+      font-size: 1.1rem;
+      color: #6a00a8;
+      margin-top: 1rem;
+      animation: fadeIn 1s ease forwards;
     }
 
-    @media (min-width: 600px) and (max-width: 1023px) {
-      h1 {
-        font-size: 2.2rem;
-      }
-      p {
-        font-size: 1.125rem;
-      }
+    .replay-btn {
+      display: none;
+      margin-top: 1rem;
+      background: #ff69b4;
+      padding: 0.6rem 1.5rem;
+      border-radius: 25px;
+      cursor: pointer;
+      color: white;
     }
 
-    @media (min-width: 1024px) {
-      h1 {
-        font-size: 3rem;
-      }
-      p {
-        font-size: 1.25rem;
-      }
+    .scene img {
+      max-width: 80%;
+      border-radius: 15px;
+      margin: 1rem 0;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     }
+
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Eid Mubarak!</h1>
-    <p>May your home be filled with joy, your heart with peace, and your life with abundant blessings.</p>
-    <button class="btn" id="showBlessingBtn">Show Blessing</button>
-    <p class="blessing" id="blessingText">May Allah accept your fasts, prayers, and good deeds, and shower you with mercy and forgiveness. Enjoy sweet moments, cherished memories, and unwavering faith. Eid Mubarak!</p>
+
+<audio id="bgMusic" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8d6c9c5a1.mp3?filename=romantic-piano-110624.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+
+  <!-- Scene 1 -->
+  <div class="scene active" id="scene1">
+    <h1>Eid Mubarak 🌙</h1>
+    <p>عندي حاجة صغيرة ليك...</p>
+    <img src="Image (13).jpg" alt="Syrine smiling">
+    <button class="btn" onclick="nextScene(2)">Next ➝</button>
   </div>
 
-  <script>
-    // Reveal the blessing text on button click
-    document.getElementById('showBlessingBtn').addEventListener('click', function() {
-      var blessing = document.getElementById('blessingText');
-      blessing.style.display = 'block';
-      blessing.style.animation = 'fadeInText 1s ease forwards';
-      for (var i = 0; i < 20; i++) {
-        var confetti = document.createElement('div');
-        confetti.classList.add('confetti');
-        confetti.style.backgroundColor = getRandomColor();
-        confetti.style.left = Math.random() * 100 + '%';
-        confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
-        confetti.style.transform = 'translateX(-50%)';
-        document.body.appendChild(confetti);
-        confetti.addEventListener('animationend', function() {
-          this.remove();
-        });
-      }
-    });
+  <!-- Scene 2 -->
+  <div class="scene" id="scene2">
+    <div class="typewriter" id="name"></div>
+    <p>من نهار شفتك... كل شي تبدل ❤️</p>
+    <img src="Image (14).jpg" alt="Syrine happy">
+    <button class="btn" onclick="nextScene(3)">Continue ➝</button>
+  </div>
 
-    function getRandomColor() {
-      var colors = ['#FFD700', '#FF69B4', '#00BFFF', '#32CD32', '#FF4500', '#8A2BE2'];
-      return colors[Math.floor(Math.random() * colors.length)];
+  <!-- Scene 3 -->
+  <div class="scene" id="scene3">
+    <p>ماك تحب القراية؟ خليها عليّ 😄… كتب قد ما تحب، و تنجم تعتمد عليّ</p>
+    <button class="btn" onclick="nextScene(4)">Continue ➝</button>
+  </div>
+
+  <!-- Scene 4 -->
+  <div class="scene" id="scene4">
+    <p>
+      ❤️ سيرين، ربي يتقبل منك الصيام و القيام و كل عمل صالح،
+      و يفيض عليك برحمته و مغفرته.
+      إن شاء الله أيامك كلها فرحة، و نحب ديما نشوف الابتسامة متاعك ❤️
+    </p>
+    <p class="hidden-msg" id="hiddenMsg">👀 Surprise! This secret message is just for you: أحبك أكثر من أي شي!</p>
+    <button class="btn" onmousedown="showHiddenMsg()" onmouseup="hideHiddenMsg()">Press & Hold for Secret 💌</button>
+    <button class="btn" onclick="nextScene(5)">One last thing ➝</button>
+  </div>
+
+  <!-- Scene 5 -->
+  <div class="scene" id="scene5">
+    <h1>✨ Just you ✨</h1>
+    <p>و إن شاء الله نكون أنا سبب صغير في فرحتك ❤️</p>
+    <button class="replay-btn" id="replayBtn" onclick="replay()">Replay our story 🔁</button>
+  </div>
+
+</div>
+
+<script>
+
+function playMusic(){
+  document.getElementById('bgMusic').play();
+  document.removeEventListener('click', playMusic);
+}
+document.addEventListener('click', playMusic);
+
+function nextScene(n) {
+  document.querySelectorAll('.scene').forEach(s => s.classList.remove('active'));
+  document.getElementById('scene' + n).classList.add('active');
+  if(n === 2) typeWriter();
+  if(n === 5) document.getElementById('replayBtn').style.display = 'inline-block';
+}
+
+function typeWriter() {
+  let text = "Syrine ❤️";
+  let i = 0;
+  let speed = 120;
+  let el = document.getElementById("name");
+  el.innerHTML = "";
+  function typing() {
+    if (i < text.length) {
+      el.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typing, speed);
     }
-  </script>
+  }
+  typing();
+}
+
+function showHiddenMsg() {
+  document.getElementById('hiddenMsg').style.display = 'block';
+}
+function hideHiddenMsg() {
+  document.getElementById('hiddenMsg').style.display = 'none';
+}
+
+function replay(){
+  document.querySelectorAll('.scene').forEach(s => s.classList.remove('active'));
+  document.getElementById('scene1').classList.add('active');
+  document.getElementById('replayBtn').style.display = 'none';
+}
+
+</script>
+
 </body>
 </html>
