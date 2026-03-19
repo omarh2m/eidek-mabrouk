@@ -4,105 +4,57 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Eid Mubarak Story</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 <style>
   body {
     margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: radial-gradient(circle at top, #fff3c4, #f8d800);
-    overflow: hidden;
-    height: 100vh;
+    font-family: 'Arial', sans-serif;
+    background: #fff3c4;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
   }
-
   .card {
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-    padding: 2.5rem;
-    max-width: 600px;
     width: 90%;
+    max-width: 600px;
+    background: rgba(255,255,255,0.95);
+    padding: 2rem;
+    border-radius: 20px;
     text-align: center;
     position: relative;
   }
-
-  h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    color: #6a00a8;
-  }
-
-  .typewriter {
-    font-size: 2rem;
-    color: #ff4d6d;
-    font-weight: bold;
-    height: 40px;
-    margin-bottom: 1rem;
-  }
-
-  .btn, .replay-btn {
-    background: linear-gradient(45deg, #ff69b4, #6a00a8);
-    color: white;
-    border: none;
-    border-radius: 30px;
-    padding: 0.8rem 2rem;
-    cursor: pointer;
-    margin-top: 1rem;
-    font-size: 1rem;
-    position: relative;
-    z-index: 10;
-  }
-
-  .btn:hover, .replay-btn:hover {
-    transform: scale(1.05);
-    transition: all 0.3s ease;
-  }
-
   .scene {
     display: none;
-    opacity: 0;
-    transition: opacity 0.5s ease;
   }
-
   .scene.active {
     display: block;
-    opacity: 1;
   }
-
-  .scene img {
+  img {
     max-width: 80%;
     border-radius: 15px;
     margin: 1rem 0;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    transition: transform 0.5s ease;
   }
-
-  .scene img:hover {
-    transform: scale(1.03);
+  .btn {
+    padding: 0.7rem 1.5rem;
+    margin-top: 1rem;
+    border: none;
+    background: #ff69b4;
+    color: white;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    z-index: 10;
+    position: relative;
   }
-
+  .btn:hover {
+    transform: scale(1.05);
+    transition: 0.3s;
+  }
   .hidden-msg {
     display: none;
-    font-size: 1.1rem;
     color: #6a00a8;
     margin-top: 1rem;
-  }
-
-  /* Floating hearts */
-  .heart {
-    position: absolute;
-    color: #ff4d6d;
-    font-size: 20px;
-    animation: floatHearts 5s linear infinite;
-  }
-
-  @keyframes floatHearts {
-    0% { transform: translateY(100vh); opacity: 0; }
-    50% { opacity: 1; }
-    100% { transform: translateY(-10vh); opacity: 0; }
   }
 </style>
 </head>
@@ -113,20 +65,19 @@
 </audio>
 
 <div class="card">
-
   <!-- Scene 1 -->
   <div class="scene active" id="scene1">
-    <h1>Eid Mubarak 🌙</h1>
+    <h2>Eid Mubarak 🌙</h2>
     <p>عندي حاجة صغيرة ليك...</p>
-    <img src="Image (13).jpg" alt="Syrine smiling">
+    <img src="Image (13).jpg" alt="Syrine">
     <button class="btn" onclick="nextScene(2)">Next ➝</button>
   </div>
 
   <!-- Scene 2 -->
   <div class="scene" id="scene2">
-    <div class="typewriter" id="name"></div>
+    <h2 id="name"></h2>
     <p>من نهار شفتك... كل شي تبدل ❤️</p>
-    <img src="Image (14).jpg" alt="Syrine happy">
+    <img src="Image (14).jpg" alt="Syrine">
     <button class="btn" onclick="nextScene(3)">Continue ➝</button>
   </div>
 
@@ -140,71 +91,56 @@
   <div class="scene" id="scene4">
     <p>❤️ سيرين، ربي يتقبل منك الصيام و القيام و كل عمل صالح، و يفيض عليك برحمته و مغفرته. إن شاء الله أيامك كلها فرحة.</p>
     <p class="hidden-msg" id="hiddenMsg">👀 Surprise! This secret message is just for you: أحبك أكثر من أي شي!</p>
-    <button class="btn" onmousedown="showHiddenMsg()" onmouseup="hideHiddenMsg()">Press & Hold for Secret 💌</button>
+    <button class="btn" onmousedown="showMsg()" onmouseup="hideMsg()">Press & Hold for Secret 💌</button>
     <button class="btn" onclick="nextScene(5)">One last thing ➝</button>
   </div>
 
   <!-- Scene 5 -->
   <div class="scene" id="scene5">
-    <h1>✨ Just you ✨</h1>
+    <h2>✨ Just you ✨</h2>
     <p>و إن شاء الله نكون أنا سبب صغير في فرحتك ❤️</p>
-    <button class="replay-btn" id="replayBtn" onclick="replay()">Replay our story 🔁</button>
+    <button class="btn" onclick="replay()">Replay our story 🔁</button>
   </div>
-
 </div>
 
 <script>
-  // Autoplay music on first click
-  function playMusic(){ 
+  // Play music on first click
+  document.addEventListener('click', function playMusic() {
     document.getElementById('bgMusic').play();
     document.removeEventListener('click', playMusic);
-  }
-  document.addEventListener('click', playMusic);
+  });
 
   // Scene navigation
   function nextScene(n){
     document.querySelectorAll('.scene').forEach(s => s.classList.remove('active'));
     document.getElementById('scene'+n).classList.add('active');
-    if(n===2) typeWriter();
-    if(n===5) document.getElementById('replayBtn').style.display='inline-block';
+    if(n === 2) typeWriter();
   }
 
-  // Typewriter effect
+  // Typewriter effect for name
   function typeWriter(){
     let text = "Syrine ❤️";
-    let i=0;
     let el = document.getElementById('name');
-    el.innerHTML="";
+    el.textContent = "";
+    let i=0;
     function typing(){
-      if(i<text.length){
-        el.innerHTML += text.charAt(i);
+      if(i < text.length){
+        el.textContent += text[i];
         i++;
-        setTimeout(typing,120);
+        setTimeout(typing, 150);
       }
     }
     typing();
   }
 
   // Hidden message
-  function showHiddenMsg(){ document.getElementById('hiddenMsg').style.display='block'; }
-  function hideHiddenMsg(){ document.getElementById('hiddenMsg').style.display='none'; }
+  function showMsg(){ document.getElementById('hiddenMsg').style.display='block'; }
+  function hideMsg(){ document.getElementById('hiddenMsg').style.display='none'; }
 
-  // Replay story
+  // Replay
   function replay(){
     document.querySelectorAll('.scene').forEach(s => s.classList.remove('active'));
     document.getElementById('scene1').classList.add('active');
-    document.getElementById('replayBtn').style.display='none';
-  }
-
-  // Floating hearts
-  for(let i=0;i<30;i++){
-    let heart = document.createElement('div');
-    heart.className='heart';
-    heart.innerHTML='❤';
-    heart.style.left = Math.random()*100+'vw';
-    heart.style.animationDuration = (Math.random()*3+2)+'s';
-    document.body.appendChild(heart);
-    setTimeout(()=>heart.remove(),5000);
   }
 </script>
 
