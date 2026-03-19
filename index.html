@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Eid Mubarak Story</title>
+<title>Our Story</title>
 <style>
   body {
     margin: 0;
@@ -15,35 +15,26 @@
     height: 100vh;
     overflow: hidden;
   }
-
   .card {
     width: 90%;
     max-width: 600px;
     background: rgba(255,255,255,0.95);
-    padding: 2rem 2rem 3rem 2rem; /* extra bottom padding for buttons */
+    padding: 2rem 2rem 3rem 2rem;
     border-radius: 20px;
     text-align: center;
     position: relative;
     max-height: 90vh;
     overflow-y: auto;
   }
-
-  .scene {
-    display: none;
-  }
-
-  .scene.active {
-    display: block;
-  }
-
+  .scene { display: none; }
+  .scene.active { display: block; }
   img {
     max-width: 100%;
-    max-height: 300px;   /* ensures button stays visible */
+    max-height: 300px;
     object-fit: cover;
     border-radius: 15px;
     margin: 1rem 0;
   }
-
   .btn, .replay-btn {
     padding: 0.7rem 1.5rem;
     margin-top: 1rem;
@@ -54,31 +45,12 @@
     cursor: pointer;
     font-size: 1rem;
     position: relative;
-    z-index: 10; /* always above images */
+    z-index: 10;
   }
-
-  .btn:hover, .replay-btn:hover {
-    transform: scale(1.05);
-    transition: 0.3s;
-  }
-
-  .hidden-msg {
-    display: none;
-    color: #6a00a8;
-    margin-top: 1rem;
-  }
-
-  #name {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #ff4d6d;
-    height: 40px;
-    margin-bottom: 1rem;
-  }
-
-  @media(max-height: 600px) {
-    img { max-height: 200px; }
-  }
+  .btn:hover, .replay-btn:hover { transform: scale(1.05); transition: 0.3s; }
+  .hidden-msg { display: none; color: #6a00a8; margin-top: 1rem; }
+  #name { font-size: 2rem; font-weight: bold; color: #ff4d6d; height: 40px; margin-bottom: 1rem; }
+  @media(max-height: 600px) { img { max-height: 200px; } }
 </style>
 </head>
 <body>
@@ -91,8 +63,7 @@
 
   <!-- Scene 1 -->
   <div class="scene active" id="scene1">
-    <h2>Eid Mubarak 🌙</h2>
-    <p>عندي حاجة صغيرة ليك...</p>
+    <p>I’ve got a little surprise just for you…</p>
     <img src="Image (13).jpg" alt="Syrine">
     <button class="btn" onclick="nextScene(2)">Next ➝</button>
   </div>
@@ -100,29 +71,25 @@
   <!-- Scene 2 -->
   <div class="scene" id="scene2">
     <div id="name"></div>
-    <p>من نهار شفتك... كل شي تبدل ❤️</p>
+    <p>Ever since I saw you, everything changed… ❤️</p>
     <img src="Image (14).jpg" alt="Syrine">
     <button class="btn" onclick="nextScene(3)">Continue ➝</button>
   </div>
 
   <!-- Scene 3 -->
   <div class="scene" id="scene3">
-    <p>ماك تحب القراية؟ خليها عليّ 😄… كتب قد ما تحب، و تنجم تعتمد عليّ</p>
-    <button class="btn" onclick="nextScene(4)">Continue ➝</button>
+    <p>❤️ Syrine, may all your days be filled with joy, your prayers be heard, and your heart be full of peace and love.</p>
+    <p>Your flowers are safe, I took care of them for you… but they might die soon if you don’t pick them up 😄</p>
+    <p class="hidden-msg" id="hiddenMsg">👀 Pssst… a little secret: I love you more than words can say.</p>
+    <img src="Image (15).jpg" alt="Flowers">
+    <button class="btn" onmousedown="showMsg()" onmouseup="hideMsg()">Press & Hold for Secret 💌</button>
+    <button class="btn" onclick="nextScene(4)">Next ➝</button>
   </div>
 
   <!-- Scene 4 -->
   <div class="scene" id="scene4">
-    <p>❤️ سيرين، ربي يتقبل منك الصيام و القيام و كل عمل صالح، و يفيض عليك برحمته و مغفرته. إن شاء الله أيامك كلها فرحة.</p>
-    <p class="hidden-msg" id="hiddenMsg">👀 Surprise! This secret message is just for you: أحبك أكثر من أي شي!</p>
-    <button class="btn" onmousedown="showMsg()" onmouseup="hideMsg()">Press & Hold for Secret 💌</button>
-    <button class="btn" onclick="nextScene(5)">One last thing ➝</button>
-  </div>
-
-  <!-- Scene 5 -->
-  <div class="scene" id="scene5">
-    <h2>✨ Just you ✨</h2>
-    <p>و إن شاء الله نكون أنا سبب صغير في فرحتك ❤️</p>
+    <p>I hope I can bring a little extra sparkle to your days ❤️ everyday.</p>
+    <img src="Image (16).jpg" alt="Final Image">
     <button class="replay-btn" onclick="replay()">Replay our story 🔁</button>
   </div>
 
