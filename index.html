@@ -6,7 +6,6 @@
 <title>Eid Mubarak Story</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 <style>
-  /* Body & Background */
   body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
@@ -18,7 +17,6 @@
     justify-content: center;
   }
 
-  /* Card */
   .card {
     background: rgba(255,255,255,0.95);
     backdrop-filter: blur(10px);
@@ -29,7 +27,6 @@
     width: 90%;
     text-align: center;
     position: relative;
-    transition: all 0.5s ease;
   }
 
   h1 {
@@ -46,7 +43,7 @@
     margin-bottom: 1rem;
   }
 
-  .btn {
+  .btn, .replay-btn {
     background: linear-gradient(45deg, #ff69b4, #6a00a8);
     color: white;
     border: none;
@@ -55,9 +52,11 @@
     cursor: pointer;
     margin-top: 1rem;
     font-size: 1rem;
+    position: relative;
+    z-index: 10;
   }
 
-  .btn:hover {
+  .btn:hover, .replay-btn:hover {
     transform: scale(1.05);
     transition: all 0.3s ease;
   }
@@ -92,18 +91,7 @@
     margin-top: 1rem;
   }
 
-  .replay-btn {
-    display: none;
-    margin-top: 1rem;
-    background: #ff69b4;
-    padding: 0.6rem 1.5rem;
-    border-radius: 25px;
-    cursor: pointer;
-    color: white;
-    font-size: 1rem;
-  }
-
-  /* Floating hearts animation */
+  /* Floating hearts */
   .heart {
     position: absolute;
     color: #ff4d6d;
@@ -125,6 +113,7 @@
 </audio>
 
 <div class="card">
+
   <!-- Scene 1 -->
   <div class="scene active" id="scene1">
     <h1>Eid Mubarak 🌙</h1>
@@ -149,7 +138,7 @@
 
   <!-- Scene 4 -->
   <div class="scene" id="scene4">
-    <p>❤️ سيرين، ربي يتقبل منك الصيام و القيام و كل عمل صالح، و يفيض عليك برحمته و مغفرته. إن شاء الله أيامك كلها فرحة، و نحب ديما نشوف الابتسامة متاعك ❤️</p>
+    <p>❤️ سيرين، ربي يتقبل منك الصيام و القيام و كل عمل صالح، و يفيض عليك برحمته و مغفرته. إن شاء الله أيامك كلها فرحة.</p>
     <p class="hidden-msg" id="hiddenMsg">👀 Surprise! This secret message is just for you: أحبك أكثر من أي شي!</p>
     <button class="btn" onmousedown="showHiddenMsg()" onmouseup="hideHiddenMsg()">Press & Hold for Secret 💌</button>
     <button class="btn" onclick="nextScene(5)">One last thing ➝</button>
@@ -161,10 +150,11 @@
     <p>و إن شاء الله نكون أنا سبب صغير في فرحتك ❤️</p>
     <button class="replay-btn" id="replayBtn" onclick="replay()">Replay our story 🔁</button>
   </div>
+
 </div>
 
 <script>
-  // Autoplay music on first interaction
+  // Autoplay music on first click
   function playMusic(){ 
     document.getElementById('bgMusic').play();
     document.removeEventListener('click', playMusic);
@@ -179,7 +169,7 @@
     if(n===5) document.getElementById('replayBtn').style.display='inline-block';
   }
 
-  // Typewriter effect for Syrine
+  // Typewriter effect
   function typeWriter(){
     let text = "Syrine ❤️";
     let i=0;
@@ -206,7 +196,7 @@
     document.getElementById('replayBtn').style.display='none';
   }
 
-  // Optional floating hearts
+  // Floating hearts
   for(let i=0;i<30;i++){
     let heart = document.createElement('div');
     heart.className='heart';
